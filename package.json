@@ -10,13 +10,17 @@
     "start": "react-native start",
     "test": "jest",
     "test:forgot": "jest __tests__/features/auth/Forgot.screen.test.tsx --clearCache",
-    "test:forgot:success": "jest __tests__/features/auth/Forgot.screen.test.tsx -t 'success message after submit' --clearCache"
+    "test:forgot:success": "jest __tests__/features/auth/Forgot.screen.test.tsx -t 'success message after submit' --clearCache",
+    "android:dev": "react-native run-android --mode=developmentDebug --appId=com.appointmentapp.development",
+    "android:stag": "react-native run-android --mode=stagingRelease --appId=com.appointmentapp.staging",
+    "android:prod": "react-native run-android --mode=productionRelease --appId=com.appointmentapp"
   },
   "dependencies": {
     "@react-native/new-app-screen": "0.83.1",
     "@react-navigation/native": "^7.1.26",
     "react": "19.2.0",
     "react-native": "0.83.1",
+    "react-native-config": "^1.6.1",
     "react-native-gesture-handler": "^2.30.0",
     "react-native-reanimated": "^4.2.1",
     "react-native-safe-area-context": "^5.6.2",

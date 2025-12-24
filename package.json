@@ -13,7 +13,11 @@
     "test:forgot:success": "jest __tests__/features/auth/Forgot.screen.test.tsx -t 'success message after submit' --clearCache",
     "android:dev": "react-native run-android --mode=developmentDebug --appId=com.appointmentapp.development",
     "android:stag": "react-native run-android --mode=stagingRelease --appId=com.appointmentapp.staging",
-    "android:prod": "react-native run-android --mode=productionRelease --appId=com.appointmentapp"
+    "android:prod": "react-native run-android --mode=productionRelease --appId=com.appointmentapp",
+    "android:debug": "cd android && ./gradlew assembleDevelopmentDebug",
+    "android:release": "cd android && ./gradlew assembleStagingRelease",
+    "android:bundle": "cd android && ./gradlew clean && ./gradlew assembleStagingRelease",
+    "clean:hard": "rm -rf node_modules package-lock.json yarn.lock android/build android/app/build ~/Library/Caches/Metro \"$TMPDIR\"/metro-* \"$TMPDIR\"/haste-map-*"
   },
   "dependencies": {
     "@react-native/new-app-screen": "0.83.1",

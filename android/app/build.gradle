@@ -59,7 +59,7 @@ react {
     // hermesFlags = ["-O", "-output-source-map"]
 
     /* Autolinking */
-    autolinkLibrariesWithApp()
+    // autolinkLibrariesWithApp() - Disabled for manual linking
 }
 
 /**

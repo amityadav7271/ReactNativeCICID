@@ -53,6 +53,8 @@ jobs:
           if [ -f "$ENV_FILE" ]; then
             cp "$ENV_FILE" .env
             echo "Copied $ENV_FILE to .env"
+            echo "Contents of .env:"
+            cat .env
           else
             echo "Env file $ENV_FILE does not exist!"
             exit 1

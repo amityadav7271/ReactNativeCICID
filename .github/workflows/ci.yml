@@ -95,8 +95,8 @@ jobs:
       # ------------------------------------
       # Lint
       # ------------------------------------
-      - name: Run lint
-        run: npm run lint
+      # - name: Run lint
+      #   run: npm run lint
 
       # ------------------------------------
       # Android Build

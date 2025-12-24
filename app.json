@@ -1,4 +1,7 @@
 {
   "name": "appointmentApp",
-  "displayName": "appointmentApp"
+  "displayName": "appointmentApp",
+  "react-native": {
+    "android_package": "com.appointmentapp"
+  }
 }

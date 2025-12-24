@@ -1,7 +1,6 @@
 {
   "name": "appointmentApp",
   "version": "0.0.1",
-  "type": "module",
   "private": true,
   "scripts": {
     "android": "react-native run-android",

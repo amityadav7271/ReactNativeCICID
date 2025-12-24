@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "appointmentApp.app"
-               BlueprintName = "appointmentApp"
+               BlueprintIdentifier = "1A5907792EFC400900C131D8"
+               BuildableName = "appointmentAppProd.app"
+               BlueprintName = "appointmentAppProd"
                ReferencedContainer = "container:appointmentApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -62,9 +62,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "appointmentApp.app"
-            BlueprintName = "appointmentApp"
+            BlueprintIdentifier = "1A5907792EFC400900C131D8"
+            BuildableName = "appointmentAppProd.app"
+            BlueprintName = "appointmentAppProd"
             ReferencedContainer = "container:appointmentApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -79,9 +79,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "appointmentApp.app"
-            BlueprintName = "appointmentApp"
+            BlueprintIdentifier = "1A5907792EFC400900C131D8"
+            BuildableName = "appointmentAppProd.app"
+            BlueprintName = "appointmentAppProd"
             ReferencedContainer = "container:appointmentApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

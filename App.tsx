@@ -7,7 +7,7 @@ const App = () => {
   return (
      <SafeAreaView style={{ flex: 1,backgroundColor: 'white' }}>
        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}> 
-        <Text>Hello, World!</Text>
+        <Text>Hello, World! demo</Text>
          <Text>Environment: {Config.APP_ENV}</Text>
       </View>
      </SafeAreaView>

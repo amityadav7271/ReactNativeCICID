@@ -16,7 +16,15 @@ end
 
 target 'appointmentApp' do
   config = use_native_modules!
+end
 
+target 'appointmentAppUat' do
+  inherit! :complete
+end
+
+target 'appointmentAppProd' do
+  inherit! :complete
+end
   use_react_native!(
     :path => config[:reactNativePath],
     # An absolute path to your application root.
@@ -31,4 +39,3 @@ target 'appointmentApp' do
       # :ccache_enabled => true
     )
   end
-end

@@ -5,10 +5,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const App = () => {
   return (
-     <SafeAreaView style={{ flex: 1 }}>
+     <SafeAreaView style={{ flex: 1,backgroundColor: 'white' }}>
        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}> 
         <Text>Hello, World!</Text>
-         <Text>Environment: {Config.ENV}</Text>
+         <Text>Environment: {Config.APP_ENV}</Text>
       </View>
      </SafeAreaView>
   );

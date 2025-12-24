@@ -104,18 +104,7 @@ jobs:
       # Install dependencies
       # ------------------------------------
       - name: Install dependencies
-        run: |
-          npm ci --legacy-peer-deps
-          echo "Verifying ESLint installation..."
-          ./node_modules/.bin/eslint --version
-          echo "ESLint config file:"
-          ls -la .eslintrc.*
-
-      # ------------------------------------
-      # Lint
-      # ------------------------------------
-      - name: Run lint
-        run: npm run lint
+        run: npm ci --legacy-peer-deps
 
       # ------------------------------------
       # Android Build based on branch

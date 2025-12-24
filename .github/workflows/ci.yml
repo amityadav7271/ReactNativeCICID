@@ -106,6 +106,13 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
+      - name: Verify react-native-config setup
+        run: |
+          echo "Checking react-native-config installation..."
+          ls -la node_modules/react-native-config/android/
+          echo "Checking dotenv.gradle exists..."
+          ls -la node_modules/react-native-config/android/dotenv.gradle
+
       # ------------------------------------
       # Android Build based on branch
       # ------------------------------------

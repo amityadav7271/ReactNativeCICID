@@ -104,13 +104,16 @@ jobs:
       # Install dependencies
       # ------------------------------------
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: |
+          npm ci --legacy-peer-deps
+          echo "Installed packages:"
+          npm list --depth=0 | grep eslint || echo "ESLint not found in direct dependencies"
 
       # ------------------------------------
       # Lint
       # ------------------------------------
       - name: Run lint
-        run: npm run lint
+        run: npx eslint .
 
       # ------------------------------------
       # Android Build based on branch

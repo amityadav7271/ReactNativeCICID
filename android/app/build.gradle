@@ -59,7 +59,7 @@ react {
     // hermesFlags = ["-O", "-output-source-map"]
 
     /* Autolinking */
-    // autolinkLibrariesWithApp() - Disabled for manual linking
+    autolinkLibrariesWithApp()
 }
 
 /**
@@ -139,7 +139,6 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
-    implementation project(':react-native-config')
 
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")

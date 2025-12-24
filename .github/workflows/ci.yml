@@ -119,6 +119,8 @@ jobs:
           echo "Node and npm versions:"
           node --version
           npm --version
+          echo "Generating autolinking configuration..."
+          npx react-native config || echo "Config command failed"
 
       # ------------------------------------
       # Android Build based on branch

@@ -1,13 +1,16 @@
 import { Text, View } from "react-native";
 import Config from 'react-native-config';
+import { SafeAreaView } from "react-native-safe-area-context";
 
 
 const App = () => {
   return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}> 
+     <SafeAreaView style={{ flex: 1 }}>
+       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}> 
         <Text>Hello, World!</Text>
          <Text>Environment: {Config.ENV}</Text>
       </View>
+     </SafeAreaView>
   );
 };
 

@@ -1,0 +1,120 @@
+name: React Native CI (Env Based)
+
+on:
+  push:
+    branches:
+      - develop
+      - staging
+      - main
+  pull_request:
+    branches:
+      - develop
+      - staging
+      - main
+
+jobs:
+  android-build:
+    runs-on: ubuntu-latest
+
+    # ✅ GitHub Environment (EXACT MATCH WITH UI)
+    environment:
+      name: ${{ github.ref_name == 'develop' && 'development' || github.ref_name == 'staging' && 'staging' || 'production' }}
+
+    env:
+      NODE_ENV: production
+
+    steps:
+      # ------------------------------------
+      # Checkout code
+      # ------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ------------------------------------
+      # Set ENV based on branch
+      # ------------------------------------
+      - name: Set environment variables
+        run: |
+          if [ "${GITHUB_REF_NAME}" = "dev" ]; then
+            echo "APP_ENV=development" >> $GITHUB_ENV
+            echo "ENV_FILE=.env.development" >> $GITHUB_ENV
+          elif [ "${GITHUB_REF_NAME}" = "staging" ]; then
+            echo "APP_ENV=staging" >> $GITHUB_ENV
+            echo "ENV_FILE=.env.staging" >> $GITHUB_ENV
+          elif [ "${GITHUB_REF_NAME}" = "main" ]; then
+            echo "APP_ENV=production" >> $GITHUB_ENV
+            echo "ENV_FILE=.env.production" >> $GITHUB_ENV
+          fi
+
+      - name: Print environment (debug)
+        run: |
+          echo "GitHub Environment: ${{ job.environment }}"
+          echo "APP_ENV: $APP_ENV"
+          echo "ENV_FILE: $ENV_FILE"
+
+      # ------------------------------------
+      # Setup Node.js
+      # ------------------------------------
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      # ------------------------------------
+      # Setup Java (Android)
+      # ------------------------------------
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      # ------------------------------------
+      # Cache npm
+      # ------------------------------------
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # ------------------------------------
+      # Install dependencies
+      # ------------------------------------
+      - name: Install dependencies
+        run: npm install
+
+      # ------------------------------------
+      # Load ENV file
+      # ------------------------------------
+      - name: Load ENV file
+        run: |
+          cp $ENV_FILE .env
+
+      # ------------------------------------
+      # Lint
+      # ------------------------------------
+      - name: Run lint
+        run: npm run lint
+
+      # ------------------------------------
+      # Android Build
+      # ------------------------------------
+      - name: Grant execute permission for gradlew
+        run: chmod +x android/gradlew
+
+      - name: Build Android Debug APK
+        run: |
+          cd android
+          ./gradlew assembleDebug
+
+      # ------------------------------------
+      # Upload Artifact
+      # ------------------------------------
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-debug-${{ env.APP_ENV }}
+          path: android/app/build/outputs/apk/debug/app-debug.apk

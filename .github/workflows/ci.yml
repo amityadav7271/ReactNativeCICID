@@ -112,6 +112,11 @@ jobs:
           ls -la node_modules/react-native-config/android/
           echo "Checking dotenv.gradle exists..."
           ls -la node_modules/react-native-config/android/dotenv.gradle
+          echo "Testing React Native CLI..."
+          npx react-native --version || echo "React Native CLI not available"
+          echo "Node and npm versions:"
+          node --version
+          npm --version
 
       # ------------------------------------
       # Android Build based on branch

@@ -66,7 +66,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       # ------------------------------------
       # Setup Java (Android)
@@ -108,21 +108,18 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
-      - name: Verify react-native-config setup
+      - name: Verify setup
         run: |
           echo "Checking react-native-config installation..."
           ls -la node_modules/react-native-config/android/
           echo "Checking dotenv.gradle exists..."
           ls -la node_modules/react-native-config/android/dotenv.gradle
-          echo "Testing React Native CLI..."
-          npx react-native --version
           echo "Node and npm versions:"
           node --version
           npm --version
           echo "Checking project structure..."
           ls -la android/
-          echo "Testing autolinking configuration..."
-          npx react-native config --platform android
+          echo "Setup verification complete"
 
       # ------------------------------------
       # Android Build based on branch

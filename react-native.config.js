@@ -5,5 +5,8 @@ module.exports = {
       appName: 'app',
       packageName: 'com.appointmentapp',
     },
+    ios: {
+      sourceDir: './ios',
+    },
   },
 };

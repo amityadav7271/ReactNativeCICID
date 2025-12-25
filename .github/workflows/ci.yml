@@ -117,6 +117,29 @@ jobs:
           npm install react@18.3.1 react-test-renderer@18.3.1 --legacy-peer-deps
           echo "React version fixed"
 
+      # ------------------------------------
+      # Post-install fixes
+      # ------------------------------------
+      - name: Post-install fixes
+        run: |
+          echo "Running post-install fixes..."
+          # Ensure react-native-config is properly linked
+          if [ -f node_modules/react-native-config/android/build.gradle ]; then
+            echo "✅ react-native-config Android files found"
+          else
+            echo "❌ react-native-config Android files missing"
+            exit 1
+          fi
+          
+          # Create .env file from appropriate environment
+          if [ -f "$ENV_FILE" ]; then
+            cp "$ENV_FILE" .env
+            echo "✅ Environment file copied: $ENV_FILE -> .env"
+          else
+            echo "❌ Environment file not found: $ENV_FILE"
+            exit 1
+          fi
+
       - name: Verify setup
         run: |
           echo "=== Verification Steps ==="
@@ -128,16 +151,37 @@ jobs:
           npm list react --depth=0 || echo "React version check failed"
           echo ""
           echo "Checking react-native-config installation..."
-          ls -la node_modules/react-native-config/android/ | head -5
+          if [ -d "node_modules/react-native-config/android" ]; then
+            echo "✅ react-native-config Android directory exists"
+            ls -la node_modules/react-native-config/android/ | head -5
+          else
+            echo "❌ react-native-config Android directory missing"
+          fi
           echo ""
           echo "Checking project structure..."
           ls -la android/ | head -10
           echo ""
           echo "Checking AndroidManifest.xml package name..."
-          grep -n "package=" android/app/src/main/AndroidManifest.xml || echo "Could not find package name"
+          if [ -f android/app/src/main/AndroidManifest.xml ]; then
+            grep -n "package=" android/app/src/main/AndroidManifest.xml || echo "Could not find package name"
+          else
+            echo "AndroidManifest.xml not found"
+          fi
           echo ""
-          echo "Testing React Native CLI after patches..."
-          npx react-native config --platform android > /tmp/rn-config.json 2>&1 && echo "✅ React Native CLI working" || echo "⚠️ React Native CLI failed, but build should still work"
+          echo "Checking react-native.config.js..."
+          if [ -f react-native.config.js ]; then
+            echo "✅ react-native.config.js exists"
+            cat react-native.config.js
+          else
+            echo "❌ react-native.config.js missing"
+          fi
+          echo ""
+          echo "Testing React Native CLI..."
+          npx react-native config --platform android > /tmp/rn-config.json 2>&1 && echo "✅ React Native CLI working" || echo "⚠️ React Native CLI failed, checking output..."
+          if [ -f /tmp/rn-config.json ]; then
+            echo "CLI output:"
+            cat /tmp/rn-config.json
+          fi
           echo ""
           echo "=== Setup verification complete ==="
 
@@ -157,38 +201,71 @@ jobs:
       # ------------------------------------
       - name: Ensure autolinking configuration
         run: |
-          echo "Checking if React Native CLI can detect Android project..."
-          if ! npx react-native config --platform android > /dev/null 2>&1; then
-            echo "React Native CLI failed, but autolinking should work during build"
-            echo "Ensuring no conflicting react-native.config.js exists..."
-            rm -f react-native.config.js
+          echo "Checking React Native configuration..."
+          echo "Contents of react-native.config.js:"
+          cat react-native.config.js
+          echo ""
+          echo "Testing React Native CLI configuration..."
+          npx react-native config --platform android || echo "CLI config failed, but build should work"
+          echo ""
+          echo "Ensuring proper package.json configuration..."
+          node -e "
+            const pkg = require('./package.json');
+            console.log('Package name:', pkg.name);
+            console.log('React Native version:', pkg.dependencies['react-native']);
+          "
+          echo ""
+          echo "Checking Android project structure..."
+          ls -la android/app/src/main/
+          echo ""
+          echo "Verifying AndroidManifest.xml..."
+          if [ -f android/app/src/main/AndroidManifest.xml ]; then
+            grep -n "package=" android/app/src/main/AndroidManifest.xml || echo "Package attribute not found"
           else
-            echo "React Native CLI working correctly"
+            echo "AndroidManifest.xml not found"
           fi
 
       # ------------------------------------
       # Android Build based on branch
       # ------------------------------------
-      - name: Clean Android build
+      - name: Prepare Android build
         run: |
+          echo "Preparing Android build environment..."
           cd android
-          ./gradlew clean
-
-      - name: Make gradlew executable
-        run: chmod +x android/gradlew
+          
+          # Clean any previous builds
+          echo "Cleaning previous builds..."
+          ./gradlew clean --warning-mode none
+          
+          # Ensure proper permissions
+          chmod +x gradlew
+          
+          # Check Gradle wrapper
+          echo "Gradle wrapper version:"
+          ./gradlew --version --warning-mode none
+          
+          # Verify project structure
+          echo "Android project structure:"
+          ls -la app/src/main/
+          
+          # Check if autolinking is working
+          echo "Testing autolinking..."
+          ./gradlew :app:generateAutolinkingPackageList --warning-mode none || echo "Autolinking test failed, but build may still work"
+          
+          echo "Build preparation complete"
 
       - name: Build Android APK
         run: |
           cd android
           if [ "${GITHUB_REF_NAME}" = "main" ]; then
             echo "Building production release APK..."
-            ./gradlew assembleProductionRelease
+            ./gradlew assembleProductionRelease --warning-mode none --stacktrace --info
           elif [ "${GITHUB_REF_NAME}" = "staging" ]; then
             echo "Building staging release APK..."
-            ./gradlew assembleStagingRelease
+            ./gradlew assembleStagingRelease --warning-mode none --stacktrace --info
           else
             echo "Building development debug APK..."
-            ./gradlew assembleDevelopmentDebug
+            ./gradlew assembleDevelopmentDebug --warning-mode none --stacktrace --info
           fi
 
       - name: Verify APK exists

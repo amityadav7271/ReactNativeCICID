@@ -3,9 +3,12 @@ apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
 
 project.ext.envConfigFiles = [
-   production: ".env.production",
-   staging: ".env.staging",
-   development: ".env.development"
+   productionRelease: ".env.production",
+   productionDebug: ".env.production",
+   stagingRelease: ".env.staging",
+   stagingDebug: ".env.staging",
+   developmentRelease: ".env.development",
+   developmentDebug: ".env.development"
 ]
 
 apply from: file("../../node_modules/react-native-config/android/dotenv.gradle")

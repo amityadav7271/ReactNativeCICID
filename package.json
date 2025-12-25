@@ -11,6 +11,7 @@
     "test": "jest",
     "test:forgot": "jest __tests__/features/auth/Forgot.screen.test.tsx --clearCache",
     "test:forgot:success": "jest __tests__/features/auth/Forgot.screen.test.tsx -t 'success message after submit' --clearCache",
+    "test:config": "node test-config.js",
     "android:dev": "react-native run-android --mode=developmentDebug --appId=com.appointmentapp.development",
     "android:stag": "react-native run-android --mode=stagingRelease --appId=com.appointmentapp.staging",
     "android:prod": "react-native run-android --mode=productionRelease --appId=com.appointmentapp",

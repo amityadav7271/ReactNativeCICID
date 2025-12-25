@@ -1,11 +1,7 @@
-const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
+// Load polyfill first
+require('./polyfill');
 
-// Polyfill for toReversed if not available
-if (!Array.prototype.toReversed) {
-  Array.prototype.toReversed = function() {
-    return [...this].reverse();
-  };
-}
+const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
 
 /**
  * Metro configuration
@@ -22,7 +18,4 @@ const config = {
   },
 };
 
-// Workaround for toReversed compatibility issue
-const defaultConfig = getDefaultConfig(__dirname);
-
-module.exports = mergeConfig(defaultConfig, config);
+module.exports = mergeConfig(getDefaultConfig(__dirname), config);

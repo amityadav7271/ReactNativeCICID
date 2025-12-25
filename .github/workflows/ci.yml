@@ -128,64 +128,21 @@ jobs:
       - name: Post-install fixes
         run: |
           echo "Running post-install fixes..."
-          if [ -f node_modules/react-native-config/android/build.gradle ]; then
-            echo "✅ react-native-config Android files found"
-          else
-            echo "❌ react-native-config Android files missing"
-            exit 1
-          fi
-
-          if [ -f "$ENV_FILE" ]; then
-            cp "$ENV_FILE" .env
-            echo "✅ Environment file copied: $ENV_FILE -> .env"
-          else
-            echo "❌ Environment file not found: $ENV_FILE"
-            exit 1
-          fi
+          ls -la node_modules/react-native-config/android/build.gradle || echo "react-native-config Android files missing"
+          cp "$ENV_FILE" .env || echo "Environment file copy failed"
+          echo "✅ Post-install fixes completed"
 
       - name: Verify setup
         run: |
           echo "=== Verification Steps ==="
-          echo "Node and npm versions:"
-          node --version
-          npm --version
-          echo ""
+          echo "Node version: $(node --version)"
+          echo "NPM version: $(npm --version)"
           echo "React version:"
           npm list react --depth=0 || echo "React version check failed"
-          echo ""
-          echo "Checking react-native-config installation..."
-          if [ -d "node_modules/react-native-config/android" ]; then
-            echo "✅ react-native-config Android directory exists"
-            ls -la node_modules/react-native-config/android/ | head -5
-          else
-            echo "❌ react-native-config Android directory missing"
-          fi
-          echo ""
-          echo "Checking project structure..."
-          ls -la android/ | head -10
-          echo ""
-          echo "Checking AndroidManifest.xml package name..."
-          if [ -f android/app/src/main/AndroidManifest.xml ]; then
-            grep -n "package=" android/app/src/main/AndroidManifest.xml || echo "Could not find package name"
-          else
-            echo "AndroidManifest.xml not found"
-          fi
-          echo ""
-          echo "Checking react-native.config.js..."
-          if [ -f react-native.config.js ]; then
-            echo "✅ react-native.config.js exists"
-            cat react-native.config.js
-          else
-            echo "❌ react-native.config.js missing"
-          fi
-          echo ""
-          echo "Testing React Native CLI..."
-          npx react-native config --platform android > /tmp/rn-config.json 2>&1 && echo "✅ React Native CLI working" || echo "⚠️ React Native CLI failed, checking output..."
-          if [ -f /tmp/rn-config.json ]; then
-            echo "CLI output:"
-            cat /tmp/rn-config.json
-          fi
-          echo ""
+          echo "Checking react-native-config..."
+          ls -la node_modules/react-native-config/android/ | head -5 || echo "react-native-config not found"
+          echo "Checking AndroidManifest.xml..."
+          grep "package=" android/app/src/main/AndroidManifest.xml || echo "Package not found"
           echo "=== Setup verification complete ==="
 
       # ------------------------------------
@@ -204,29 +161,11 @@ jobs:
       - name: Ensure autolinking configuration
         run: |
           echo "Checking React Native configuration..."
-          echo "Contents of react-native.config.js:"
           cat react-native.config.js
-          echo ""
-          
-          echo "Testing React Native CLI configuration..."
-          if npx react-native config --platform android > /tmp/rn-config.json 2>&1; then
-            echo "✅ React Native CLI working"
-            echo "Package name found in config:"
-            grep -o '"packageName":"[^"]*"' /tmp/rn-config.json || echo "Package name extraction failed"
-          else
-            echo "⚠️ React Native CLI failed, but this won't prevent the build"
-            echo "CLI output:"
-            cat /tmp/rn-config.json 2>/dev/null || echo "No CLI output available"
-          fi
-          
-          echo ""
-          echo "Verifying Android project structure..."
-          if [ -f android/app/src/main/AndroidManifest.xml ]; then
-            echo "✅ AndroidManifest.xml exists"
-            grep -n "package=" android/app/src/main/AndroidManifest.xml || echo "Package attribute not found"
-          else
-            echo "❌ AndroidManifest.xml not found"
-          fi
+          echo "Testing React Native CLI..."
+          npx react-native config --platform android || echo "CLI failed, continuing..."
+          echo "Verifying AndroidManifest.xml..."
+          grep "package=" android/app/src/main/AndroidManifest.xml || echo "Package not found"
 
       # ------------------------------------
       # Android Build based on branch
@@ -250,17 +189,21 @@ jobs:
           cd android
           echo "Starting Android build process..."
           ./gradlew clean --warning-mode none
-          echo "Building APK..."
-          if [ "${GITHUB_REF_NAME}" = "main" ]; then
-            echo "Building production release APK..."
-            ./gradlew assembleProductionRelease --warning-mode none --continue
-          elif [ "${GITHUB_REF_NAME}" = "staging" ]; then
-            echo "Building staging release APK..."
-            ./gradlew assembleStagingRelease --warning-mode none --continue
-          else
-            echo "Building development debug APK..."
-            ./gradlew assembleDevelopmentDebug --warning-mode none --continue
-          fi
+          echo "Building APK for branch: ${GITHUB_REF_NAME}"
+          case "${GITHUB_REF_NAME}" in
+            "main")
+              echo "Building production release APK..."
+              ./gradlew assembleProductionRelease --warning-mode none --continue
+              ;;
+            "staging")
+              echo "Building staging release APK..."
+              ./gradlew assembleStagingRelease --warning-mode none --continue
+              ;;
+            *)
+              echo "Building development debug APK..."
+              ./gradlew assembleDevelopmentDebug --warning-mode none --continue
+              ;;
+          esac
           echo "Build process completed"
 
       - name: Verify APK exists

@@ -103,24 +103,21 @@ jobs:
             ${{ runner.os }}-gradle-
 
       # ------------------------------------
-      # Install dependencies and fix CLI
+      # Install dependencies
       # ------------------------------------
       - name: Install dependencies
         run: |
           echo "Installing dependencies..."
           npm ci --legacy-peer-deps
           
-          echo "Installing compatible React version for React Native 0.83..."
-          npm install react@18.3.1 react-test-renderer@18.3.1 --legacy-peer-deps
-          
-          echo "Ensuring React Native CLI is available..."
+          echo "Verifying React Native CLI is available..."
           if ! npx react-native --version > /dev/null 2>&1; then
-            echo "Installing React Native CLI..."
-            npm install @react-native-community/cli@latest --save-dev --legacy-peer-deps
+            echo "React Native CLI not found, but should be available via @react-native-community/cli"
+            echo "Continuing with build..."
           fi
           
-          echo "Verifying React Native CLI..."
-          npx react-native --version || echo "CLI verification failed, but continuing..."
+          echo "Installed React version:"
+          npm list react --depth=0 || echo "React version check completed"
 
       # ------------------------------------
       # Post-install fixes
@@ -137,11 +134,13 @@ jobs:
           echo "=== Verification Steps ==="
           echo "Node version: $(node --version)"
           echo "NPM version: $(npm --version)"
-          echo "React version:"
+          echo "React version (should be 19.2.0):"
           npm list react --depth=0 || echo "React version check failed"
+          echo "React Test Renderer version:"
+          npm list react-test-renderer --depth=0 || echo "React Test Renderer version check failed"
           echo "Checking react-native-config..."
           ls -la node_modules/react-native-config/android/ | head -5 || echo "react-native-config not found"
-          echo "Checking AndroidManifest.xml..."
+          echo "Checking AndroidManifest.xml package name..."
           grep "package=" android/app/src/main/AndroidManifest.xml || echo "Package not found"
           echo "=== Setup verification complete ==="
 

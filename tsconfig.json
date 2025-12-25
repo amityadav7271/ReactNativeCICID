@@ -1,7 +1,16 @@
 {
-  "extends": "@react-native/typescript-config",
   "compilerOptions": {
-     "typeRoots": ["./src/types", "./node_modules/@types"],
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "react-native",
+    "lib": ["es2017"],
+    "moduleResolution": "node",
+    "noEmit": true,
+    "strict": true,
+    "target": "esnext",
+    "typeRoots": ["./src/types", "./node_modules/@types"],
     "types": ["jest"],
     "baseUrl": ".",
     "paths": {

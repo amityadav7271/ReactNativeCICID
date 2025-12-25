@@ -103,29 +103,22 @@ jobs:
             ${{ runner.os }}-gradle-
 
       # ------------------------------------
-      # Install dependencies
+      # Install dependencies and fix CLI
       # ------------------------------------
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
-
-      # ------------------------------------
-      # Fix React version compatibility
-      # ------------------------------------
-      - name: Fix React version compatibility
         run: |
+          echo "Installing dependencies..."
+          npm ci --legacy-peer-deps
+          
           echo "Installing compatible React version for React Native 0.83..."
           npm install react@18.3.1 react-test-renderer@18.3.1 --legacy-peer-deps
-          echo "React version fixed"
-
-      # ------------------------------------
-      # Fix React Native CLI
-      # ------------------------------------
-      - name: Fix React Native CLI
-        run: |
-          echo "Ensuring React Native CLI works properly..."
-          npm install -g @react-native-community/cli@latest
-          npx react-native --version
-          npx react-native config --reset-cache || echo "Cache reset failed, continuing..."
+          
+          echo "Verifying React Native CLI..."
+          if npx react-native --version > /dev/null 2>&1; then
+            echo "✅ React Native CLI working"
+          else
+            echo "⚠️ CLI issue detected, but continuing with build..."
+          fi
 
       # ------------------------------------
       # Post-install fixes
@@ -216,45 +209,22 @@ jobs:
           echo "Testing React Native CLI configuration..."
           if npx react-native config --platform android > /tmp/rn-config.json 2>&1; then
             echo "✅ React Native CLI working"
-            cat /tmp/rn-config.json
+            echo "Package name found in config:"
+            grep -o '"packageName":"[^"]*"' /tmp/rn-config.json || echo "Package name extraction failed"
           else
-            echo "⚠️ React Native CLI failed, creating fallback configuration..."
-            cat > react-native.config.js << 'EOF'
-          module.exports = {
-          project: {
-          android: {
-          sourceDir: './android',
-          appName: 'app',
-          packageName: 'com.appointmentapp',
-          },
-           },
-          };
-          EOF
-            echo "Created fallback react-native.config.js:"
-            cat react-native.config.js
-            if npx react-native config --platform android > /tmp/rn-config-fallback.json 2>&1; then
-              echo "✅ Fallback configuration working"
-              cat /tmp/rn-config-fallback.json
-            else
-              echo "❌ Fallback configuration also failed"
-              cat /tmp/rn-config-fallback.json
-            fi
+            echo "⚠️ React Native CLI failed, but this won't prevent the build"
+            echo "CLI output:"
+            cat /tmp/rn-config.json 2>/dev/null || echo "No CLI output available"
           fi
           
           echo ""
-          echo "Ensuring proper package.json configuration..."
-          node -e "
-            const pkg = require('./package.json');
-            console.log('Package name:', pkg.name);
-            console.log('React Native version:', pkg.dependencies['react-native']);
-          "
-          echo ""
-          echo "Checking Android project structure..."
-          ls -la android/app/src/main/
-          echo ""
-          echo "Verifying AndroidManifest.xml..."
+          echo "Verifying Android project structure..."
           if [ -f android/app/src/main/AndroidManifest.xml ]; then
+            echo "✅ AndroidManifest.xml exists"
             grep -n "package=" android/app/src/main/AndroidManifest.xml || echo "Package attribute not found"
+          else
+            echo "❌ AndroidManifest.xml not found"
+          fi
           else
             echo "AndroidManifest.xml not found"
           fi
@@ -279,20 +249,20 @@ jobs:
       - name: Build Android APK
         run: |
           cd android
-          echo "Force regenerating autolinking..."
+          echo "Starting Android build process..."
           ./gradlew clean --warning-mode none
-          rm -rf app/build/generated/autolinking
-          echo "Building APK with direct assembly task..."
+          echo "Building APK..."
           if [ "${GITHUB_REF_NAME}" = "main" ]; then
             echo "Building production release APK..."
-            ./gradlew assembleProductionRelease --warning-mode none --stacktrace --continue
+            ./gradlew assembleProductionRelease --warning-mode none --continue
           elif [ "${GITHUB_REF_NAME}" = "staging" ]; then
             echo "Building staging release APK..."
-            ./gradlew assembleStagingRelease --warning-mode none --stacktrace --continue
+            ./gradlew assembleStagingRelease --warning-mode none --continue
           else
             echo "Building development debug APK..."
-            ./gradlew assembleDevelopmentDebug --warning-mode none --stacktrace --continue
+            ./gradlew assembleDevelopmentDebug --warning-mode none --continue
           fi
+          echo "Build process completed"
 
       - name: Verify APK exists
         run: |

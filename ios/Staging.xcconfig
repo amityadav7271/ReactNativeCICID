@@ -1,0 +1,5 @@
+#include "Pods/Target Support Files/Pods-AppName/Pods-AppName.release.xcconfig"
+
+ENVFILE = .env.staging
+BUNDLE_IDENTIFIER = com.appointmentapp.staging
+APP_NAME = Appointment App (Staging)

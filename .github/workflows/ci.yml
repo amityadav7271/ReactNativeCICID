@@ -123,13 +123,8 @@ jobs:
       - name: Fix React Native CLI
         run: |
           echo "Ensuring React Native CLI works properly..."
-          # Install React Native CLI globally to ensure it works
           npm install -g @react-native-community/cli@latest
-          
-          # Verify CLI installation
           npx react-native --version
-          
-          # Clear any CLI cache
           npx react-native config --reset-cache || echo "Cache reset failed, continuing..."
 
       # ------------------------------------
@@ -138,15 +133,13 @@ jobs:
       - name: Post-install fixes
         run: |
           echo "Running post-install fixes..."
-          # Ensure react-native-config is properly linked
           if [ -f node_modules/react-native-config/android/build.gradle ]; then
             echo "✅ react-native-config Android files found"
           else
             echo "❌ react-native-config Android files missing"
             exit 1
           fi
-          
-          # Create .env file from appropriate environment
+
           if [ -f "$ENV_FILE" ]; then
             cp "$ENV_FILE" .env
             echo "✅ Environment file copied: $ENV_FILE -> .env"
@@ -206,7 +199,6 @@ jobs:
       - name: Fix Metro compatibility for Node.js 20
         run: |
           echo "Patching Metro config for Node.js 20 compatibility..."
-          # Replace toReversed() with slice().reverse() for Node.js compatibility
           sed -i 's/configs\.toReversed()/configs.slice().reverse()/g' node_modules/metro-config/src/loadConfig.js
           sed -i 's/reversedConfigs\.toReversed()/reversedConfigs.slice().reverse()/g' node_modules/metro-config/src/loadConfig.js
           echo "Metro config patched successfully"
@@ -221,31 +213,25 @@ jobs:
           cat react-native.config.js
           echo ""
           
-          # Test React Native CLI and create fallback if needed
           echo "Testing React Native CLI configuration..."
           if npx react-native config --platform android > /tmp/rn-config.json 2>&1; then
             echo "✅ React Native CLI working"
             cat /tmp/rn-config.json
           else
             echo "⚠️ React Native CLI failed, creating fallback configuration..."
-            
-            # Create a minimal react-native.config.js that works in CI
             cat > react-native.config.js << 'EOF'
-module.exports = {
-  project: {
-    android: {
-      sourceDir: './android',
-      appName: 'app',
-      packageName: 'com.appointmentapp',
-    },
-  },
-};
-EOF
-            
+          module.exports = {
+          project: {
+          android: {
+          sourceDir: './android',
+          appName: 'app',
+          packageName: 'com.appointmentapp',
+          },
+           },
+          };
+          EOF
             echo "Created fallback react-native.config.js:"
             cat react-native.config.js
-            
-            # Test again
             if npx react-native config --platform android > /tmp/rn-config-fallback.json 2>&1; then
               echo "✅ Fallback configuration working"
               cat /tmp/rn-config-fallback.json
@@ -280,39 +266,22 @@ EOF
         run: |
           echo "Preparing Android build environment..."
           cd android
-          
-          # Clean any previous builds
           echo "Cleaning previous builds..."
           ./gradlew clean --warning-mode none
-          
-          # Ensure proper permissions
           chmod +x gradlew
-          
-          # Check Gradle wrapper
           echo "Gradle wrapper version:"
           ./gradlew --version --warning-mode none
-          
-          # Verify project structure
           echo "Android project structure:"
           ls -la app/src/main/
-          
-          # Skip the problematic autolinking test - it's not needed for the build
           echo "Skipping autolinking test (not required for build success)"
-          
           echo "Build preparation complete"
 
       - name: Build Android APK
         run: |
           cd android
-          
-          # Force regenerate autolinking by cleaning and rebuilding
           echo "Force regenerating autolinking..."
           ./gradlew clean --warning-mode none
-          
-          # Remove any cached autolinking files
           rm -rf app/build/generated/autolinking
-          
-          # Build the APK directly without running the problematic autolinking task first
           echo "Building APK with direct assembly task..."
           if [ "${GITHUB_REF_NAME}" = "main" ]; then
             echo "Building production release APK..."

@@ -21,8 +21,8 @@ jobs:
       name: ${{ github.ref_name == 'develop' && 'development' || github.ref_name == 'staging' && 'staging' || 'production' }}
 
     env:
-      NODE_ENV: production
-
+      NODE_ENV: ${{ github.ref_name == 'main' && 'production' || 'development' }}
+      
     steps:
       # ------------------------------------
       # Checkout code

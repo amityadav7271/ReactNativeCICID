@@ -47,12 +47,12 @@ export const baseApi = createApi({
   tagTypes: ['User', 'Profile', 'Settings'],
   // Keep unused data for 60 seconds
   keepUnusedDataFor: 60,
-  // Refetch on mount or arg change
-  refetchOnMountOrArgChange: 30,
-  // Refetch on focus (when app comes back to foreground)
-  refetchOnFocus: true,
-  // Refetch on reconnect
-  refetchOnReconnect: true,
+  // Disable automatic refetching - only refetch when explicitly called
+  refetchOnMountOrArgChange: false,
+  // Disable refetch on focus
+  refetchOnFocus: false,
+  // Disable refetch on reconnect
+  refetchOnReconnect: false,
   endpoints: () => ({}),
 });
 

@@ -44,14 +44,15 @@ const CompleteExample: React.FC = () => {
   
   const [selectedUserId, setSelectedUserId] = useState<string>('');
 
-  // 1. OPTIMIZED QUERY WITH ALL FEATURES
+  // 1. OPTIMIZED QUERY WITH MANUAL CONTROL
   const currentUserQuery = useOptimizedQuery(
     useGetCurrentUserQuery(undefined, {
-      skip: !networkStatus.isConnected,
-      refetchOnMountOrArgChange: 300, // 5 minutes
+      // Skip by default - only fetch when explicitly called
+      skip: true,
     }),
     {
-      pollingInterval: 60000, // Poll every minute
+      // Remove polling to prevent automatic calls
+      // pollingInterval: 60000,
       onError: (error) => {
         const message = getNetworkErrorMessage(error);
         Alert.alert('Error', message);
@@ -64,12 +65,13 @@ const CompleteExample: React.FC = () => {
     }
   );
 
-  // 2. PAGINATED QUERY WITH CACHING
+  // 2. PAGINATED QUERY WITH MANUAL CONTROL
   const usersQuery = useOptimizedQuery(
     useGetUsersQuery(
       { page: 1, limit: 10 },
       {
-        skip: !networkStatus.isConnected,
+        // Skip by default - only fetch when explicitly called
+        skip: true,
       }
     ),
     {
@@ -204,7 +206,15 @@ const CompleteExample: React.FC = () => {
     }
   }, [networkStatus.isConnected]);
 
-  // 8. EXAMPLE ACTIONS
+  // 8. MANUAL API CALL FUNCTIONS
+  const handleLoadCurrentUser = useCallback(() => {
+    currentUserQuery.refetch();
+  }, [currentUserQuery.refetch]);
+
+  const handleLoadUsers = useCallback(() => {
+    usersQuery.refetch();
+  }, [usersQuery.refetch]);
+
   const handleUpdateName = useCallback(() => {
     Alert.prompt(
       'Update Name',
@@ -306,8 +316,22 @@ const CompleteExample: React.FC = () => {
 
       {/* Action Buttons */}
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Actions</Text>
+        <Text style={styles.sectionTitle}>Manual API Calls</Text>
         
+        <TouchableOpacity
+          style={styles.button}
+          onPress={handleLoadCurrentUser}
+        >
+          <Text style={styles.buttonText}>Load Current User</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={handleLoadUsers}
+        >
+          <Text style={styles.buttonText}>Load Users List</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity
           style={styles.button}
           onPress={handleUpdateName}
@@ -322,6 +346,11 @@ const CompleteExample: React.FC = () => {
         >
           <Text style={styles.buttonText}>Create Test User</Text>
         </TouchableOpacity>
+      </View>
+
+      {/* Cache Management */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Cache Management</Text>
 
         <TouchableOpacity
           style={[styles.button, styles.secondaryButton]}

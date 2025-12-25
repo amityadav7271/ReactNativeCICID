@@ -48,17 +48,22 @@ const UsersList: React.FC<UsersListProps> = ({
     search: debouncedSearch || undefined,
   }), [page, debouncedSearch]);
 
-  // Optimized query with error handling
+  // Optimized query with error handling - skip by default
   const usersQuery = useOptimizedQuery(
     useGetUsersQuery(queryParams, {
-      // Keep data for 2 minutes
-      refetchOnMountOrArgChange: 120,
+      // Skip the query by default - only fetch when explicitly called
+      skip: true,
     }),
     {
       onError: handleError,
       clearOnUnmount: true,
     }
   );
+
+  // Handle initial load
+  const handleInitialLoad = useCallback(() => {
+    usersQuery.refetch();
+  }, [usersQuery.refetch]);
 
   // Handle refresh
   const handleRefresh = useCallback(async () => {
@@ -134,11 +139,14 @@ const UsersList: React.FC<UsersListProps> = ({
     return (
       <View style={styles.emptyContainer}>
         <Text style={styles.emptyText}>
-          {search ? 'No users found matching your search' : 'No users available'}
+          {search ? 'No users found matching your search' : 'No users loaded'}
         </Text>
+        <TouchableOpacity style={styles.loadButton} onPress={handleInitialLoad}>
+          <Text style={styles.loadButtonText}>Load Users</Text>
+        </TouchableOpacity>
       </View>
     );
-  }, [usersQuery.isLoading, search]);
+  }, [usersQuery.isLoading, search, handleInitialLoad]);
 
   // Memoized header component
   const renderHeader = useCallback(() => {
@@ -304,6 +312,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#666',
     textAlign: 'center',
+    marginBottom: 16,
+  },
+  loadButton: {
+    backgroundColor: '#007AFF',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 8,
+  },
+  loadButtonText: {
+    color: '#FFF',
+    fontSize: 16,
+    fontWeight: '600',
   },
   errorContainer: {
     flex: 1,

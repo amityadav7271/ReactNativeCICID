@@ -19,8 +19,6 @@ plugins {
 }
 
 rootProject.name = "appointmentApp"
+
 include(":app")
 
-extensions.configure(com.facebook.react.ReactSettingsExtension::class.java) {
-    it.autolinkLibrariesFromCommand()
-}

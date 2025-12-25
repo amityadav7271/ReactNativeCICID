@@ -1,18 +1,37 @@
-pluginManagement {
-    includeBuild("../node_modules/@react-native/gradle-plugin")
-}
+// pluginManagement {
+//     includeBuild("../node_modules/@react-native/gradle-plugin")
+// }
 
-plugins {
-    id("com.facebook.react.settings")
-}
+// plugins {
+//     id("com.facebook.react.settings")
+// }
 
-extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
-    ex.autolinkLibrariesFromCommand()
-}
+// extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
+//     ex.autolinkLibrariesFromCommand()
+// }
 
-rootProject.name = "appointmentApp"
+// rootProject.name = "appointmentApp"
 
-include(":app")
+// include(":app")
 
 includeBuild("../node_modules/@react-native/gradle-plugin")
 
+
+pluginManagement {
+    includeBuild('../node_modules/@react-native/gradle-plugin')
+}
+
+plugins {
+    id 'com.facebook.react.settings'
+}
+
+// Keep this for compatibility with current root build.gradle plugin resolution
+includeBuild('../node_modules/@react-native/gradle-plugin')
+
+rootProject.name = 'appointmentApp'
+include ':app'
+
+reactSettings {
+    // Generate build/generated/autolinking/autolinking.json via RN CLI
+    autolinkLibrariesFromCommand()
+}

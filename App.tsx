@@ -1,16 +1,18 @@
-import { Text, View } from "react-native";
-import Config from 'react-native-config';
+import React from 'react';
 import { SafeAreaView } from "react-native-safe-area-context";
-
+import ReduxProvider from './src/providers/ReduxProvider';
+import UsersScreen from './src/screens/UsersScreen';
+import ErrorBoundary from './src/components/ErrorBoundary';
 
 const App = () => {
   return (
-     <SafeAreaView style={{ flex: 1,backgroundColor: 'white' }}>
-       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}> 
-        <Text>Hello, World!</Text>
-         <Text>Environment: {Config.APP_ENV}</Text>
-      </View>
-     </SafeAreaView>
+    <ErrorBoundary>
+      <ReduxProvider>
+        <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
+          <UsersScreen />
+        </SafeAreaView>
+      </ReduxProvider>
+    </ErrorBoundary>
   );
 };
 

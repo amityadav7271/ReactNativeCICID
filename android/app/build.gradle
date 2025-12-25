@@ -92,17 +92,17 @@ android {
     productFlavors {
         production {
             minSdkVersion rootProject.ext.minSdkVersion
-            applicationId "com.appointmentapp"
+            // applicationId "com.appointmentapp"
             targetSdkVersion rootProject.ext.targetSdkVersion
         }
         staging {
             minSdkVersion rootProject.ext.minSdkVersion
-            applicationId "com.appointmentapp.staging"
+            // applicationId "com.appointmentapp.staging"
             targetSdkVersion rootProject.ext.targetSdkVersion
         }
         development {
             minSdkVersion rootProject.ext.minSdkVersion
-            applicationId "com.appointmentapp.development"
+            // applicationId "com.appointmentapp.development"
             targetSdkVersion rootProject.ext.targetSdkVersion
         }
     }

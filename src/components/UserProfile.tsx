@@ -24,17 +24,15 @@ interface UserProfileProps {
 const UserProfile: React.FC<UserProfileProps> = ({ userId, onUserUpdate }) => {
   const { handleError } = useApiError();
 
-  // Use optimized query with error handling and polling
+  // Use optimized query with skip condition to prevent automatic calls
   const userQuery = useOptimizedQuery(
     useGetCurrentUserQuery(undefined, {
-      // Skip if userId is provided (we'd use getUserById instead)
-      skip: !!userId,
-      // Refetch every 5 minutes
-      refetchOnMountOrArgChange: 300,
+      // Skip the query by default - only fetch when explicitly called
+      skip: true,
     }),
     {
-      // Poll every 30 seconds for real-time updates
-      pollingInterval: 30000,
+      // Remove polling to prevent automatic calls
+      // pollingInterval: 30000,
       onError: handleError,
       onSuccess: (user) => {
         console.log('User profile loaded:', user.email);
@@ -98,6 +96,11 @@ const UserProfile: React.FC<UserProfileProps> = ({ userId, onUserUpdate }) => {
     userQuery.refetch();
   }, [userQuery.refetch]);
 
+  // Add a manual load function
+  const handleLoadProfile = useCallback(() => {
+    userQuery.refetch();
+  }, [userQuery.refetch]);
+
   // Memoized computed values
   const displayName = useMemo(() => {
     if (!userQuery.data) return '';
@@ -130,6 +133,9 @@ const UserProfile: React.FC<UserProfileProps> = ({ userId, onUserUpdate }) => {
     return (
       <View style={styles.errorContainer}>
         <Text style={styles.errorText}>No user data available</Text>
+        <TouchableOpacity style={styles.retryButton} onPress={handleLoadProfile}>
+          <Text style={styles.retryButtonText}>Load Profile</Text>
+        </TouchableOpacity>
       </View>
     );
   }

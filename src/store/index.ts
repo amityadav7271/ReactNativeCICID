@@ -31,7 +31,8 @@ export const store = configureStore({
 });
 
 // Optional: Set up listeners for refetchOnFocus/refetchOnReconnect behaviors
-setupListeners(store.dispatch);
+// Commented out to prevent automatic API calls
+// setupListeners(store.dispatch);
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;

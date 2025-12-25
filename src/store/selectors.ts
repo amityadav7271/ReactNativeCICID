@@ -3,53 +3,73 @@ import { RootState } from './index';
 import { userApi } from '../services/userApi';
 
 // Memoized selectors to prevent unnecessary re-renders
+// NOTE: These selectors will only return data if the query has been executed
 
-// Select current user with memoization
+// Select current user with memoization (only if query was executed)
 export const selectCurrentUser = createSelector(
-  (state: RootState) => userApi.endpoints.getCurrentUser.select()(state),
-  (result) => result.data
+  (state: RootState) => {
+    const queryState = state.api.queries[`getCurrentUser(undefined)`];
+    return queryState?.data;
+  },
+  (data) => data
 );
 
 // Select current user loading state
 export const selectCurrentUserLoading = createSelector(
-  (state: RootState) => userApi.endpoints.getCurrentUser.select()(state),
-  (result) => result.isLoading
+  (state: RootState) => {
+    const queryState = state.api.queries[`getCurrentUser(undefined)`];
+    return queryState?.status === 'pending';
+  },
+  (isLoading) => isLoading
 );
 
 // Select current user error state
 export const selectCurrentUserError = createSelector(
-  (state: RootState) => userApi.endpoints.getCurrentUser.select()(state),
-  (result) => result.error
+  (state: RootState) => {
+    const queryState = state.api.queries[`getCurrentUser(undefined)`];
+    return queryState?.error;
+  },
+  (error) => error
 );
 
-// Factory function to create user selector by ID
+// Factory function to create user selector by ID (only if query was executed)
 export const makeSelectUserById = (userId: string) =>
   createSelector(
-    (state: RootState) => userApi.endpoints.getUserById.select(userId)(state),
-    (result) => result.data
+    (state: RootState) => {
+      const queryState = state.api.queries[`getUserById("${userId}")`];
+      return queryState?.data;
+    },
+    (data) => data
   );
 
 // Factory function to create user loading selector by ID
 export const makeSelectUserLoadingById = (userId: string) =>
   createSelector(
-    (state: RootState) => userApi.endpoints.getUserById.select(userId)(state),
-    (result) => result.isLoading
+    (state: RootState) => {
+      const queryState = state.api.queries[`getUserById("${userId}")`];
+      return queryState?.status === 'pending';
+    },
+    (isLoading) => isLoading
   );
 
-// Select users list with pagination info
+// Select users list with pagination info (only if query was executed)
 export const selectUsersList = createSelector(
-  (state: RootState) => userApi.endpoints.getUsers.select({})(state),
-  (result) => ({
-    users: result.data?.data || [],
-    pagination: result.data ? {
-      total: result.data.total,
-      page: result.data.page,
-      limit: result.data.limit,
-      totalPages: result.data.totalPages,
-    } : null,
-    isLoading: result.isLoading,
-    error: result.error,
-  })
+  (state: RootState) => {
+    const queryState = state.api.queries[`getUsers({})`];
+    const data = queryState?.data;
+    return {
+      users: data?.data || [],
+      pagination: data ? {
+        total: data.total,
+        page: data.page,
+        limit: data.limit,
+        totalPages: data.totalPages,
+      } : null,
+      isLoading: queryState?.status === 'pending',
+      error: queryState?.error,
+    };
+  },
+  (usersList) => usersList
 );
 
 // Select only user names for dropdown/picker components

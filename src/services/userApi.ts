@@ -45,7 +45,7 @@ export const userApi = baseApi.injectEndpoints({
       providesTags: (result, error, id) => [{ type: 'User', id }],
       // Transform response if needed
       transformResponse: (response: { user: User }) => response.user,
-      // Keep this data for 5 minutes
+      // Keep this data for 5 minutes but don't auto-fetch
       keepUnusedDataFor: 300,
     }),
 
@@ -57,7 +57,7 @@ export const userApi = baseApi.injectEndpoints({
       }),
       providesTags: ['User'],
       transformResponse: (response: { user: User }) => response.user,
-      // Keep profile data for 10 minutes
+      // Keep profile data for 10 minutes but don't auto-fetch
       keepUnusedDataFor: 600,
     }),
 

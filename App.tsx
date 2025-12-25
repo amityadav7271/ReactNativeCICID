@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView } from "react-native-safe-area-context";
 import ReduxProvider from './src/providers/ReduxProvider';
-import UsersScreen from './src/screens/UsersScreen';
+import ManualApiExample from './src/components/ManualApiExample';
 import ErrorBoundary from './src/components/ErrorBoundary';
 
 const App = () => {
@@ -9,7 +9,7 @@ const App = () => {
     <ErrorBoundary>
       <ReduxProvider>
         <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
-          <UsersScreen />
+          <ManualApiExample />
         </SafeAreaView>
       </ReduxProvider>
     </ErrorBoundary>

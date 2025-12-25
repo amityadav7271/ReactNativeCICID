@@ -113,12 +113,14 @@ jobs:
           echo "Installing compatible React version for React Native 0.83..."
           npm install react@18.3.1 react-test-renderer@18.3.1 --legacy-peer-deps
           
-          echo "Verifying React Native CLI..."
-          if npx react-native --version > /dev/null 2>&1; then
-            echo "✅ React Native CLI working"
-          else
-            echo "⚠️ CLI issue detected, but continuing with build..."
+          echo "Ensuring React Native CLI is available..."
+          if ! npx react-native --version > /dev/null 2>&1; then
+            echo "Installing React Native CLI..."
+            npm install @react-native-community/cli@latest --save-dev --legacy-peer-deps
           fi
+          
+          echo "Verifying React Native CLI..."
+          npx react-native --version || echo "CLI verification failed, but continuing..."
 
       # ------------------------------------
       # Post-install fixes
@@ -224,9 +226,6 @@ jobs:
             grep -n "package=" android/app/src/main/AndroidManifest.xml || echo "Package attribute not found"
           else
             echo "❌ AndroidManifest.xml not found"
-          fi
-          else
-            echo "AndroidManifest.xml not found"
           fi
 
       # ------------------------------------

@@ -1,4 +1,7 @@
 {
   "name": "appointmentApp",
-  "displayName": "appointmentApp"
+  "displayName": "appointmentApp",
+   "android": {
+    "packageName": "com.appointmentapp"
+  }
 }

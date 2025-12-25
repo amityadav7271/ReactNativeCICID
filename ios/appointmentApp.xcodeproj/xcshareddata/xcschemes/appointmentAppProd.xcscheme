@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1A5907792EFC400900C131D8"
-               BuildableName = "appointmentAppProd.app"
+               BuildableName = "MyApp Prod.app"
                BlueprintName = "appointmentAppProd"
                ReferencedContainer = "container:appointmentApp.xcodeproj">
             </BuildableReference>
@@ -24,7 +24,7 @@
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Prod"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
@@ -40,7 +40,7 @@
       </PreActions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Prod"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -63,14 +63,14 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1A5907792EFC400900C131D8"
-            BuildableName = "appointmentAppProd.app"
+            BuildableName = "MyApp Prod.app"
             BlueprintName = "appointmentAppProd"
             ReferencedContainer = "container:appointmentApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Prod"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
@@ -80,17 +80,17 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1A5907792EFC400900C131D8"
-            BuildableName = "appointmentAppProd.app"
+            BuildableName = "MyApp Prod.app"
             BlueprintName = "appointmentAppProd"
             ReferencedContainer = "container:appointmentApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Debug">
+      buildConfiguration = "Prod">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Prod"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

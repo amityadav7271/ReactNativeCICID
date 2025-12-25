@@ -4,8 +4,17 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
 
   transformIgnorePatterns: [
-   'node_modules/(?!(react-native|react-native-reanimated|@react-native|react-native-gesture-handler)/)',
-  ],
+  'node_modules/(?!(react-native' +
+    '|react-native-reanimated' +
+    '|@react-native' +
+    '|react-native-gesture-handler' +
+    '|react-redux' +
+    '|@reduxjs/toolkit' +
+    '|immer' +
+    '|react-native-config' +   // <--- add this
+    ')/)',
+],
+
 
   moduleNameMapper: {
     '^@assets/(.*)$': '<rootDir>/src/assets/$1',
@@ -20,11 +29,7 @@ module.exports = {
     '^@utils/(.*)$': '<rootDir>/src/utils/$1',
   },
 
-  testPathIgnorePatterns: [
-    '/node_modules/',
-    '/android/',
-    '/ios/',
-  ],
+  testPathIgnorePatterns: ['/node_modules/', '/android/', '/ios/'],
 
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',

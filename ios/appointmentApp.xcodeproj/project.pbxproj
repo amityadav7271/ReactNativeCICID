@@ -7,21 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0C80B921A6F3F58F76C31292 /* libPods-appointmentApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-appointmentApp.a */; };
+		0C80B921A6F3F58F76C31292 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		1A59076A2EFC3F8800C131D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
-		1A59076C2EFC3F8800C131D8 /* libPods-appointmentApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-appointmentApp.a */; };
 		1A59076E2EFC3F8800C131D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		1A59076F2EFC3F8800C131D8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		1A5907702EFC3F8800C131D8 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		1A59077C2EFC400900C131D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
-		1A59077E2EFC400900C131D8 /* libPods-appointmentApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-appointmentApp.a */; };
 		1A5907802EFC400900C131D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		1A5907812EFC400900C131D8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		1A5907822EFC400900C131D8 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
+		32594912CB52153D5D757E15 /* libPods-appointmentApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C605C3726770D56C8A73EEA9 /* libPods-appointmentApp.a */; };
+		6752B0DB5F148B3A900D4D88 /* libPods-appointmentAppUat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F7C4178FB3ED489A560DD9D /* libPods-appointmentAppUat.a */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		EC7ED9789C8CA898E8C95F34 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
+		F67A6B548A1AA437BD4398B4 /* libPods-appointmentAppProd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15154B8489E734F57BDC934A /* libPods-appointmentAppProd.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,18 +30,33 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = appointmentApp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = appointmentApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = appointmentApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		15154B8489E734F57BDC934A /* libPods-appointmentAppProd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-appointmentAppProd.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A5907772EFC3F8800C131D8 /* appointmentAppUat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = appointmentAppUat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A5907782EFC3F8800C131D8 /* appointmentAppUat-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "appointmentAppUat-Info.plist"; path = "/Users/amitkumaryadav/Downloads/reactNative/ReactNativeCICID/ios/appointmentAppUat-Info.plist"; sourceTree = "<absolute>"; };
-		1A5907892EFC400900C131D8 /* appointmentAppProd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = appointmentAppProd.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A5907892EFC400900C131D8 /* MyApp Prod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MyApp Prod.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A59078A2EFC400900C131D8 /* appointmentAppProd-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "appointmentAppProd-Info.plist"; path = "/Users/amitkumaryadav/Downloads/reactNative/ReactNativeCICID/ios/appointmentAppProd-Info.plist"; sourceTree = "<absolute>"; };
 		1AE875662EFD2E3300D39D7A /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		1AE875672EFD2E4F00D39D7A /* Prod.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		1AE875682EFD2E5700D39D7A /* Staging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Staging.xcconfig; sourceTree = "<group>"; };
+		1FB83034FA965D6A4D2C5E5E /* Pods-appointmentAppProd.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appointmentAppProd.staging.xcconfig"; path = "Target Support Files/Pods-appointmentAppProd/Pods-appointmentAppProd.staging.xcconfig"; sourceTree = "<group>"; };
+		2532CCD0197BE837FDBEA16B /* Pods-appointmentAppUat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appointmentAppUat.debug.xcconfig"; path = "Target Support Files/Pods-appointmentAppUat/Pods-appointmentAppUat.debug.xcconfig"; sourceTree = "<group>"; };
+		2DB9569616957B53A475D19D /* Pods-appointmentAppProd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appointmentAppProd.release.xcconfig"; path = "Target Support Files/Pods-appointmentAppProd/Pods-appointmentAppProd.release.xcconfig"; sourceTree = "<group>"; };
+		2E3BF2C9A6EDFC8BB25A2A17 /* Pods-appointmentAppUat.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appointmentAppUat.staging.xcconfig"; path = "Target Support Files/Pods-appointmentAppUat/Pods-appointmentAppUat.staging.xcconfig"; sourceTree = "<group>"; };
+		329F91A44D98D0F6E606D328 /* Pods-appointmentApp.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appointmentApp.staging.xcconfig"; path = "Target Support Files/Pods-appointmentApp/Pods-appointmentApp.staging.xcconfig"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-appointmentApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appointmentApp.debug.xcconfig"; path = "Target Support Files/Pods-appointmentApp/Pods-appointmentApp.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-appointmentApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appointmentApp.release.xcconfig"; path = "Target Support Files/Pods-appointmentApp/Pods-appointmentApp.release.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-appointmentApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-appointmentApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		593C36A04661B4E7006A0D69 /* Pods-appointmentAppUat.dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appointmentAppUat.dev.xcconfig"; path = "Target Support Files/Pods-appointmentAppUat/Pods-appointmentAppUat.dev.xcconfig"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = appointmentApp/AppDelegate.swift; sourceTree = "<group>"; };
+		7F002ACACD5654548BEF7D29 /* Pods-appointmentAppProd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appointmentAppProd.debug.xcconfig"; path = "Target Support Files/Pods-appointmentAppProd/Pods-appointmentAppProd.debug.xcconfig"; sourceTree = "<group>"; };
+		7F7844B5CBD81E2B2C74735A /* Pods-appointmentApp.dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appointmentApp.dev.xcconfig"; path = "Target Support Files/Pods-appointmentApp/Pods-appointmentApp.dev.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = appointmentApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9F7C4178FB3ED489A560DD9D /* libPods-appointmentAppUat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-appointmentAppUat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C605C3726770D56C8A73EEA9 /* libPods-appointmentApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-appointmentApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4BCD71618D15C8D74F3A7EE /* Pods-appointmentAppUat.prod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appointmentAppUat.prod.xcconfig"; path = "Target Support Files/Pods-appointmentAppUat/Pods-appointmentAppUat.prod.xcconfig"; sourceTree = "<group>"; };
+		DDF3B5A456058C021582280B /* Pods-appointmentAppProd.prod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appointmentAppProd.prod.xcconfig"; path = "Target Support Files/Pods-appointmentAppProd/Pods-appointmentAppProd.prod.xcconfig"; sourceTree = "<group>"; };
+		E1FC92FA0C7C6DD9D273EAD0 /* Pods-appointmentApp.prod.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appointmentApp.prod.xcconfig"; path = "Target Support Files/Pods-appointmentApp/Pods-appointmentApp.prod.xcconfig"; sourceTree = "<group>"; };
+		E3626B86C6D0D7FE3689A376 /* Pods-appointmentAppUat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appointmentAppUat.release.xcconfig"; path = "Target Support Files/Pods-appointmentAppUat/Pods-appointmentAppUat.release.xcconfig"; sourceTree = "<group>"; };
+		E9A8484C4EA52B4DE695B6D8 /* Pods-appointmentAppProd.dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-appointmentAppProd.dev.xcconfig"; path = "Target Support Files/Pods-appointmentAppProd/Pods-appointmentAppProd.dev.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -49,7 +65,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-appointmentApp.a in Frameworks */,
+				0C80B921A6F3F58F76C31292 /* BuildFile in Frameworks */,
+				32594912CB52153D5D757E15 /* libPods-appointmentApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A59076C2EFC3F8800C131D8 /* libPods-appointmentApp.a in Frameworks */,
+				6752B0DB5F148B3A900D4D88 /* libPods-appointmentAppUat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A59077E2EFC400900C131D8 /* libPods-appointmentApp.a in Frameworks */,
+				F67A6B548A1AA437BD4398B4 /* libPods-appointmentAppProd.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +105,9 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-appointmentApp.a */,
+				15154B8489E734F57BDC934A /* libPods-appointmentAppProd.a */,
+				9F7C4178FB3ED489A560DD9D /* libPods-appointmentAppUat.a */,
+				C605C3726770D56C8A73EEA9 /* libPods-appointmentApp.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -124,7 +143,7 @@
 			children = (
 				13B07F961A680F5B00A75B9A /* appointmentApp.app */,
 				1A5907772EFC3F8800C131D8 /* appointmentAppUat.app */,
-				1A5907892EFC400900C131D8 /* appointmentAppProd.app */,
+				1A5907892EFC400900C131D8 /* MyApp Prod.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,6 +153,19 @@
 			children = (
 				3B4392A12AC88292D35C810B /* Pods-appointmentApp.debug.xcconfig */,
 				5709B34CF0A7D63546082F79 /* Pods-appointmentApp.release.xcconfig */,
+				E1FC92FA0C7C6DD9D273EAD0 /* Pods-appointmentApp.prod.xcconfig */,
+				329F91A44D98D0F6E606D328 /* Pods-appointmentApp.staging.xcconfig */,
+				7F7844B5CBD81E2B2C74735A /* Pods-appointmentApp.dev.xcconfig */,
+				7F002ACACD5654548BEF7D29 /* Pods-appointmentAppProd.debug.xcconfig */,
+				DDF3B5A456058C021582280B /* Pods-appointmentAppProd.prod.xcconfig */,
+				1FB83034FA965D6A4D2C5E5E /* Pods-appointmentAppProd.staging.xcconfig */,
+				E9A8484C4EA52B4DE695B6D8 /* Pods-appointmentAppProd.dev.xcconfig */,
+				2DB9569616957B53A475D19D /* Pods-appointmentAppProd.release.xcconfig */,
+				2532CCD0197BE837FDBEA16B /* Pods-appointmentAppUat.debug.xcconfig */,
+				D4BCD71618D15C8D74F3A7EE /* Pods-appointmentAppUat.prod.xcconfig */,
+				2E3BF2C9A6EDFC8BB25A2A17 /* Pods-appointmentAppUat.staging.xcconfig */,
+				593C36A04661B4E7006A0D69 /* Pods-appointmentAppUat.dev.xcconfig */,
+				E3626B86C6D0D7FE3689A376 /* Pods-appointmentAppUat.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -201,7 +233,7 @@
 			);
 			name = appointmentAppProd;
 			productName = appointmentApp;
-			productReference = 1A5907892EFC400900C131D8 /* appointmentAppProd.app */;
+			productReference = 1A5907892EFC400900C131D8 /* MyApp Prod.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -295,13 +327,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-appointmentApp/Pods-appointmentApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-appointmentApp/Pods-appointmentApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -323,7 +351,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-appointmentApp-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-appointmentAppUat-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -352,19 +380,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-appointmentApp/Pods-appointmentApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-appointmentAppUat/Pods-appointmentAppUat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-appointmentApp/Pods-appointmentApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-appointmentAppUat/Pods-appointmentAppUat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-appointmentApp/Pods-appointmentApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-appointmentAppUat/Pods-appointmentAppUat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		1A5907732EFC3F8800C131D8 /* [CP] Copy Pods Resources */ = {
@@ -373,19 +397,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-appointmentApp/Pods-appointmentApp-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-appointmentAppUat/Pods-appointmentAppUat-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-appointmentApp/Pods-appointmentApp-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-appointmentAppUat/Pods-appointmentAppUat-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-appointmentApp/Pods-appointmentApp-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-appointmentAppUat/Pods-appointmentAppUat-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		1A59077A2EFC400900C131D8 /* [CP] Check Pods Manifest.lock */ = {
@@ -403,7 +423,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-appointmentApp-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-appointmentAppProd-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -432,19 +452,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-appointmentApp/Pods-appointmentApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-appointmentAppProd/Pods-appointmentAppProd-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-appointmentApp/Pods-appointmentApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-appointmentAppProd/Pods-appointmentAppProd-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-appointmentApp/Pods-appointmentApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-appointmentAppProd/Pods-appointmentAppProd-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		1A5907852EFC400900C131D8 /* [CP] Copy Pods Resources */ = {
@@ -453,19 +469,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-appointmentApp/Pods-appointmentApp-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-appointmentAppProd/Pods-appointmentAppProd-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-appointmentApp/Pods-appointmentApp-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-appointmentAppProd/Pods-appointmentAppProd-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-appointmentApp/Pods-appointmentApp-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-appointmentAppProd/Pods-appointmentAppProd-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
@@ -498,13 +510,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-appointmentApp/Pods-appointmentApp-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-appointmentApp/Pods-appointmentApp-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -543,7 +551,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-appointmentApp.debug.xcconfig */;
+			baseConfigurationReference = 1AE875662EFD2E3300D39D7A /* Dev.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -562,7 +570,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appointmentApp.dev;
 				PRODUCT_NAME = appointmentApp;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -590,7 +598,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appointmentApp.dev;
 				PRODUCT_NAME = appointmentApp;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -599,7 +607,7 @@
 		};
 		1A5907752EFC3F8800C131D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-appointmentApp.debug.xcconfig */;
+			baseConfigurationReference = 2532CCD0197BE837FDBEA16B /* Pods-appointmentAppUat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -618,7 +626,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appointmentApp.uat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -628,7 +636,7 @@
 		};
 		1A5907762EFC3F8800C131D8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-appointmentApp.release.xcconfig */;
+			baseConfigurationReference = E3626B86C6D0D7FE3689A376 /* Pods-appointmentAppUat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -646,7 +654,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appointmentApp.uat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -655,7 +663,7 @@
 		};
 		1A5907872EFC400900C131D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-appointmentApp.debug.xcconfig */;
+			baseConfigurationReference = 7F002ACACD5654548BEF7D29 /* Pods-appointmentAppProd.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -674,8 +682,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appointmentApp.prod;
+				PRODUCT_NAME = "MyApp Prod";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -684,7 +692,7 @@
 		};
 		1A5907882EFC400900C131D8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-appointmentApp.release.xcconfig */;
+			baseConfigurationReference = 2DB9569616957B53A475D19D /* Pods-appointmentAppProd.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -702,8 +710,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appointmentApp.prod;
+				PRODUCT_NAME = "MyApp Prod";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -807,8 +815,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = appointmentApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appointmentApp.dev;
+				PRODUCT_NAME = "MyApp Dev";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -836,7 +844,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appointmentApp.uat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -865,8 +873,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appointmentApp.prod;
+				PRODUCT_NAME = "MyApp Prod";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -952,7 +960,7 @@
 		};
 		1AE8755F2EFD2DE400D39D7A /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AE875662EFD2E3300D39D7A /* Dev.xcconfig */;
+			baseConfigurationReference = 1AE875682EFD2E5700D39D7A /* Staging.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -971,8 +979,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = appointmentApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appointmentApp.dev;
+				PRODUCT_NAME = "MyApp Uat";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1000,8 +1008,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appointmentApp.uat;
+				PRODUCT_NAME = "MyApp Uat";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1029,8 +1037,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appointmentApp.prod;
+				PRODUCT_NAME = "MyApp Prod";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1116,7 +1124,7 @@
 		};
 		1AE875632EFD2DF400D39D7A /* Prod */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AE875662EFD2E3300D39D7A /* Dev.xcconfig */;
+			baseConfigurationReference = 1AE875672EFD2E4F00D39D7A /* Prod.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1135,8 +1143,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = appointmentApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appointmentApp.dev;
+				PRODUCT_NAME = "MyApp Prod";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1164,7 +1172,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appointmentApp.uat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1193,8 +1201,8 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.appointmentApp.prod;
+				PRODUCT_NAME = "MyApp Prod";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

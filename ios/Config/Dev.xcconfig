@@ -1,5 +1,5 @@
-#include "Pods/Target Support Files/Pods-AppName/Pods-AppName.debug.xcconfig"
+#include "Pods/Target Support Files/Pods-appointmentApp/Pods-appointmentApp.Dev.xcconfig"
 
-ENVFILE = .env.development
-BUNDLE_IDENTIFIER = com.appointmentapp.dev
-APP_NAME = Appointment App (Dev)
+ENVFILE=.env.development
+BUNDLE_IDENTIFIER=com.appointmentapp.dev
+APP_NAME=Appointment Dev

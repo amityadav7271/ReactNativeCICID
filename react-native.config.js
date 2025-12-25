@@ -3,7 +3,7 @@ module.exports = {
     android: {
       sourceDir: './android',
       appName: 'app',
-      packageName: 'com.appointmentapp',
+      // packageName: 'com.appointmentapp',
     },
     ios: {
       sourceDir: './ios',
